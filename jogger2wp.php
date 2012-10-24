@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Europe/Warsaw');
+
 if('cli' !== PHP_SAPI) {
     echo 'This is intended to be run as CLI command', PHP_EOL;
     exit(1);

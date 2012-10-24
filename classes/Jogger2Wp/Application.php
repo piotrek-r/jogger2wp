@@ -61,7 +61,9 @@ class Application
             }
         }
 
-        $data = $this->parseXml($sourceXmlPath);
+        $xml = $this->generateXml($this->parseXml($sourceXmlPath));
+
+        var_dump($xml->saveXML());
 
         return 0;
     }
@@ -76,7 +78,20 @@ class Application
      */
     public function parseXml($sourceXmlPath)
     {
-        return array();
+        return (new Parser($sourceXmlPath))->getData();
+    }
+
+    // endregion
+
+    // region generate new xml
+
+    /**
+     * @param array $data
+     * @return \DOMDocument
+     */
+    public function generateXml(array $data)
+    {
+        return (new Generator($data))->generate();
     }
 
     // endregion
